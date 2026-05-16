@@ -1,5 +1,7 @@
 # C Project Boilerplate
 
+![CI](https://github.com/prygrn/c_boilerplate/actions/workflows/github-actions.yml/badge.svg)
+
 Structure de départ pour tous les exercices. Clone, code, utilise les cibles `make`.
 
 ## Structure
