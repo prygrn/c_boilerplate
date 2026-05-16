@@ -1,14 +1,14 @@
 # =============================================================================
-# Boilerplate — Formation C
+# Boilerplate   C
 # Cible         Description
 # -----------   ---------------------------------------------------------------
-# make          Compile le projet (debug, warnings stricts)
-# make test     Compile + lance les TU (Unity)
-# make valgrind Lance les TU sous Valgrind (memcheck complet)
-# make asan     Compile + lance les TU avec AddressSanitizer + UBSan
-# make lint     Lance cppcheck sur src/ et include/
-# make gdb      Compile en mode debug et ouvre GDB sur le binaire de test
-# make clean    Supprime les artefacts
+# make          Compiler le projet (debug, warnings stricts)
+# make test     Compiler + lancer les TU (Unity)
+# make valgrind Lancer les TU sous Valgrind (memcheck complet)
+# make asan     Compiler + lancer les TU avec AddressSanitizer + UBSan
+# make lint     Lancer cppcheck sur src/ et include/
+# make gdb      Compiler en mode debug et ouvrir GDB sur le binaire de test
+# make clean    Supprimer les artefacts
 # =============================================================================
 
 CC      = gcc
@@ -17,9 +17,9 @@ WARNS   = -Wall -Wextra -Wpedantic -Wformat=2 -Wuninitialized \
           -Wno-unused-parameter
 CFLAGS  = $(STD) $(WARNS) -g -Iinclude
 
-# Sources du projet (exclut main.c du build de test)
+# Sources du projet (sans main.c pour le build de test)
 SRCS        = $(wildcard src/*.c)
-SRCS_NOMAIM = $(filter-out src/main.c, $(SRCS))
+SRCS_NOMAIN = $(filter-out src/main.c, $(SRCS))
 
 # Binaires
 TARGET       = bin/main
@@ -70,7 +70,7 @@ bin:
 	mkdir -p bin
 
 # ---- Tests Unity -------------------------------------------------------------
-$(TEST_TARGET): $(UNITY_SRC) $(TEST_SRCS) $(SRCS_NOMAIM) | bin
+$(TEST_TARGET): $(UNITY_SRC) $(TEST_SRCS) $(SRCS_NOMAIN) | bin
 	$(CC) $(CFLAGS) $(UNITY_INC) -o $@ $^
 
 test: $(TEST_TARGET)
@@ -81,7 +81,7 @@ valgrind: $(TEST_TARGET)
 	$(VALGRIND) ./$(TEST_TARGET)
 
 # ---- ASan + UBSan (sur les TU) ----------------------------------------------
-asan: $(UNITY_SRC) $(TEST_SRCS) $(SRCS_NOMAIM) | bin
+asan: $(UNITY_SRC) $(TEST_SRCS) $(SRCS_NOMAIN) | bin
 	$(CC) $(CFLAGS) $(ASAN_FLAGS) $(UNITY_INC) \
 	      -o bin/test_runner_asan $^
 	./bin/test_runner_asan

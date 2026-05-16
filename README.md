@@ -1,4 +1,4 @@
-# Formation C — Boilerplate
+# C Project Boilerplate
 
 Structure de départ pour tous les exercices. Clone, code, utilise les cibles `make`.
 
@@ -12,7 +12,7 @@ Structure de départ pour tous les exercices. Clone, code, utilise les cibles `m
 ├── include/ ← headers publics
 ├── tests/
 │ ├── unity/ ← framework de TU (unity.c / unity.h)
-│ └── test*main.c ← tes tests — renomme ou ajoute des fichiers test*\*.c
+│ └── test*main.c ← tes tests - renomme ou ajoute des fichiers test*\*.c
 └── bin/ ← généré par make, ignoré par git
 ```
 
@@ -36,13 +36,13 @@ sudo apt install gcc make valgrind cppcheck gdb
 
 # macOS (Homebrew)
 brew install gcc make valgrind cppcheck
-# GDB remplacé par lldb sur macOS — adapter la cible gdb si besoin
+# GDB remplacé par lldb sur macOS - adapter la cible gdb si besoin
 ```
 
 ## Unity
 
 [Unity](https://github.com/ThrowTheSwitch/Unity) est inclus directement dans `tests/unity/`.
-Deux fichiers suffisent : `unity.c` et `unity.h` — pas de dépendance externe.
+Deux fichiers suffisent : `unity.c` et `unity.h` - pas de dépendance externe.
 
 Asserts utiles :
 
