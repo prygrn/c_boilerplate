@@ -14,7 +14,7 @@
 CC      = gcc
 STD     = -std=c11
 WARNS   = -Wall -Wextra -Wpedantic -Wformat=2 -Wuninitialized \
-          -Wno-unused-parameter
+          -Wno-unused-parameter -Wcast-qual
 CFLAGS  = $(STD) $(WARNS) -g -Iinclude
 
 # Sources du projet (sans main.c pour le build de test)
